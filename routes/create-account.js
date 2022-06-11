@@ -2,9 +2,11 @@ const { Router } = require("express");
 const router =  Router()
 const mysqlConnection = require('../config/mysql')
 
+// route for create account
 router.post('/create-account', (req, res) => {
     const { nameuser, password } = req.body
 
+    // create user for sig in 
     if (nameuser !== undefined && password !== undefined){        
         mysqlConnection.query(`INSERT INTO users(usuario, clave) VALUES('${nameuser}', MD5('${password}'))`, (err, rows, fields) => {
             if(!err){

@@ -10,12 +10,14 @@ router.post('/restaurants', verifyToken, (req, res) => {
     let { city } = req.query
     let query = '';
 
+    // querys for the route
     if(city !== undefined){
         query = `SELECT * FROM restaurants WHERE city LIKE '%${city}%'`        
     }else{
         query = `SELECT * FROM restaurants`
     }
 
+    // verify token for get info
     jwt.verify(req.token, 'secretkey', (error, authData) => {
         if(error){
             res.sendStatus(403);
@@ -27,6 +29,7 @@ router.post('/restaurants', verifyToken, (req, res) => {
                     })
                 }
             })
+            mysqlConnection.end();
         }
     });
 

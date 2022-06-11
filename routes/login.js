@@ -14,6 +14,7 @@ router.post('/login', (req, res) => {
 
     const query = `SELECT usuario, clave FROM users WHERE usuario = '${nameuser}' AND clave = MD5('${password}')`
 
+    // verify if the user exists
     mysqlConnection.query(query, (err, rows, fields) => {
         if(!err){
             if(rows.length == 0){

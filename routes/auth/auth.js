@@ -1,3 +1,4 @@
+// validate token
 const verifyToken = async(req, res, next) => {
     const bearerHeader =  req.headers.authorization;
 
