@@ -7,7 +7,7 @@ const router =  Router()
 router.post('/login', (req, res) => {
     let { nameuser, password } = req.body
 
-    const user = {
+    const user = { 
         nameuser,   
         password 
     }
